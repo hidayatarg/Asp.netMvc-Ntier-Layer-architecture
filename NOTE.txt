@@ -1,0 +1,15 @@
+*********************Katmanli MIMARI GIRIS***********************************
+Temel de Uctane Katmanimiz vardir
+Arayuz UI
+Veri erisim DAL
+Is Katman	BLL
+
+-Solution Exploer dan yeni proje olusturdum
+-Add New Project Class library .net framework seceriz (Katmalari Olusturacagiz)
+	ProjeIsim.Entities
+	ProjeIsim.DataAccess
+	ProjeIsim.Business
+	ProjeIsim.WebFormsUI
+
+
+	
