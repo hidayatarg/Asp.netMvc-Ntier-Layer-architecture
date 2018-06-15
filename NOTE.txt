@@ -12,4 +12,91 @@ Is Katman	BLL
 	ProjeIsim.WebFormsUI
 
 
-	
+
+-Entitiesle baslayacagiz class1 sileriz
+	iki klasor koyariz -Abstruct (Soyut nesneler- iheritance, Base, Abstruct class, interface olur)
+					   -Concrete
+-Bu iki kalsoru hem business hemde data access kopylariz 
+-Entities>Concrete>Product class olusturduk DB uygun sekilde
+-Data Access layer de class 1 siliyoruz.
+-Data Access de veri erisimi yaziyoruz. DataAccess>Concrete>ProductDAL class olusturduk veri erismek icin
+-Classlarin erisim icin public unutmayalim
+-Data Access layeri entities referance ekliyoruz.
+-Burda yapilari insat ediyoruz
+
+				using System;
+				using System.Collections.Generic;
+				using System.Linq;
+				using System.Text;
+				using System.Threading.Tasks;
+				using Northwind.Entities.Concrete;
+
+				namespace Northwind.DataAccess.Concrete
+				{
+					public class ProductDal
+					{
+						//Tum Liste Donduren
+						public List<Product> GetALL()
+						{
+
+						}
+
+						//Id verdimiz product gostersin
+						public Product Get(int id)
+						{
+
+						}
+
+						//Ekleme Operasiyon
+						public void Add(Product product)
+						{
+
+						}
+
+						//Guncellem Operasiyon
+						public void Update(Product product)
+						{
+
+						}
+        
+						//Delete Operasiyon
+						public void Delete(Product product)
+						{
+
+						}
+
+
+					}
+				}
+
+
+using block sayesind bir context aciyorduk 
+-Entites concrete icinde bir class aciyoruz isimini NorthwindContext veriyoruz.
+-NorthwindContext DB context ten iherit etmemiz icin Data Access Layer de entity framework refeance lazim.
+-Data Access sag tiklayip manage nugget packages den packageleri ekliyoruz.
+
+-simdi Northwindcontextte DB context ekleyebilirz
+
+			namespace Northwind.DataAccess.Concrete
+			{
+				class NorthwindContext:DbContext
+				{
+					public DbSet<Product> Products { get; set; }
+				}
+			}
+-Simdi North wind context product dal da kullanabilirz.
+-Product DAL gidip using block ta context kullanacagiz
+		
+		public List<Product> GetALL()
+        {
+            using (NorthwindContext context=new NorthwindContext())
+            {
+                return context.Products.ToList();
+            }
+        }
+
+-Genel bir sekilde operasiyonlari doldurduk.
+-Business Gidip is kodlari cagirmamizi gerekiyor. (Burda isle ilgili Limitationlari koyacagiz.)
+
+
+
