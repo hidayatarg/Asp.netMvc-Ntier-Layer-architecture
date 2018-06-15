@@ -23,7 +23,7 @@ namespace Northwind.DataAccess.Concrete
         {
             using (NorthwindContext context= new NorthwindContext())
             {
-                return context.Products.SingleOrDefault(p => p.ProductID == id);
+                return context.Products.SingleOrDefault(p => p.ProductId  == id);
             }
         }
 

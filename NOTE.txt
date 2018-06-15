@@ -99,4 +99,43 @@ using block sayesind bir context aciyorduk
 -Business Gidip is kodlari cagirmamizi gerekiyor. (Burda isle ilgili Limitationlari koyacagiz.)
 
 
+		******************************IS katman ve ArayUz Kodlanmasi**************************************
+		******************************Business Layer and UI coding****************************************
+-Yeni Class concrete icinde isimi Product Manager
+	icinde gerekli operasiyonlari yazacagim
+	DataAccessLayerle Benzerlik Gosterebilir ama Her zaman olmaz.
+
+		 //icinde gerekli operasiyonlari yazacagim
+	   public class ProductManager
+		{
+			ProductDal _productDal = new ProductDal();
+			public List<Product> GetAll()
+			{
+				//DataAccessLayer kullanmamiz lazim
+				//Business code / IS kod yazilir cekilen data kisiye uygun mudur bu kodu yazdiktan sonra veri erisim katamana ulasmaya calisacagiz.
+           
+				return _productDal.GetALL();
+			}
+		}
+-AraYuze Gidip Get all Cagirmak Lazim, Form 1 gidip Data grid view eklecegiz.
+	Form 1 Kod alana gideriz
+	Load da Business Logic cagiriz. Data Acess Layeri cagirmak yasak
+	gridview isimini dgwProduct yapariz
+
+	 private void Form1_Load(object sender, EventArgs e)
+        {
+            ProductManager productManager= new ProductManager();
+            dgwProduct.DataSource = productManager.GetAll();
+        }
+
+	Entities referans vermemiz gerekecektir.
+
+-app.config gelip
+startup tan once ekliyoruz
+
+	  <connectionStrings>
+		<add name="NorthwindContex" connectionString="server=(localdb)\mssqllocaldb;initial catalog=Northwind;integrated security=true" providerName="System.Data.SqlClient"/>
+
+	  </connectionStrings>
+
 
