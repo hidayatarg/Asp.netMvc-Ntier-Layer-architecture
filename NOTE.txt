@@ -296,3 +296,54 @@ startup tan once ekliyoruz
 
 	//  Bakiyorsunuz bu da calisiyor
 
+
+*****************************************************************************************************************************
+**********************************3.Code smell Refactoring*******************************************************************
+---Product Manger de bir interface ihtiyaci var 
+	Business>Abstruct IProductService
+---Listeleme Operasiyonu IProductService Tasiriz. ve
+	public class ProductManager:IProductService
+
+---Ara yuz (Form1) de
+
+		 IProductService _productService = new ProductManager(new NhProductDal());
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            dgwProduct.DataSource = _productService.GetAll();
+        }
+
+		Sonra
+
+
+		 public partial class Form1 : Form
+		{
+			public Form1()
+			{
+				InitializeComponent();
+				_productService = new ProductManager(new NhProductDal());
+			}
+
+			private IProductService _productService;
+			
+			private void Form1_Load(object sender, EventArgs e)
+			{
+				
+				dgwProduct.DataSource = _productService.GetAll();
+			}
+		}
+
+
+		//NOTE:  _productService = new ProductManager(new NhProductDal()); constructure dan yapip tezleriz.
+		Ve burda bir newleme yapiyoruz.Burasi son Nokta burda Dependency Container uygulayacagiz. 
+		Su kisimi sonra duzeletecegiz.
+
+
+---IProductDal da GetAll var GetById la filtrelemek icin yeni bir mimari gelistirecegiz.
+****************************************************************************************************************************************
+****************************************************************************************************************************************
+****************************************************************************************************************************************
+****************************************************************************************************************************************
+***************************************************Repository Design Pattern************************************************************
+****************************************************************************************************************************************
+

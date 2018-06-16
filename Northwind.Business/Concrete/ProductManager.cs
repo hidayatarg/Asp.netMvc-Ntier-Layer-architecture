@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Northwind.Business.Abstruct;
 using Northwind.DataAccess.Abstruct;
 using Northwind.DataAccess.Concrete;
 using Northwind.DataAccess.Concrete.EntityFramework;
@@ -11,7 +12,7 @@ using Northwind.Entities.Concrete;
 namespace Northwind.Business.Concrete
 {
     //icinde gerekli operasiyonlari yazacagim
-   public class ProductManager
+   public class ProductManager:IProductService
     {
         // Yerinde Interface kullandik   IProductDal _productDal = new EfProductDal();
         private IProductDal _productDal;

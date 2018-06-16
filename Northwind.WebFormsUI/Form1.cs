@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Northwind.Business.Concrete;
+using Northwind.DataAccess.Abstruct;
 using Northwind.DataAccess.Concrete.EntityFramework;
+using Northwind.Business.Abstruct;
 using Northwind.DataAccess.Concrete.NHibernate;
 
 namespace Northwind.WebFormsUI
@@ -18,13 +20,18 @@ namespace Northwind.WebFormsUI
         public Form1()
         {
             InitializeComponent();
+            _productService = new ProductManager(new NhProductDal());
         }
+
+        private IProductService _productService;
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Bu Kod yerinde
+
             //ProductManager productManager= new ProductManager(new EfProductDal());
-            ProductManager productManager= new ProductManager(new NhProductDal());
-            dgwProduct.DataSource = productManager.GetAll();
+           // ProductManager productManager= new ProductManager(new NhProductDal());
+            dgwProduct.DataSource = _productService.GetAll();
         }
     }
 }
