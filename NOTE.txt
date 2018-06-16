@@ -247,4 +247,52 @@ startup tan once ekliyoruz
 					}
 				}
 
-Burda da NHibernate islemleri yapmis olduk.
+		---Burda da NHibernate islemleri yapmis olduk.
+
+			NhProductDal bir dummy data koyduk. ve 
+			 public List<Product> GetALL()
+				{
+					List<Product> products = new List<Product>
+					{
+						new Product
+						{
+							ProductId = 1,
+							ProductName = "iphone",
+							CategoryId = 1,
+							QuantityPerUnit = "1 in abox",
+							UnitPrice = 213,
+							UnitsInStock = 23
+						}
+                
+					};
+					return products;
+				}
+
+---Product Manager class daki new lemem kod kesinlekle hatalidir biz burda 
+	EfProductDal _productDal = new EfProductDal(); EF product dal bagliyiz 
+
+	// Yerinde Interface kullandik   IProductDal _productDal = new EfProductDal();
+
+
+	
+	      private IProductDal _productDal;
+
+	  //Newlendinde bir iproductdal nesne ver
+        public ProductManager(IProductDal productDal)
+        {
+            _productDal = productDal;
+        }
+
+	  cunku here iki oRM Ikisi ayni methodlari sahiplar
+
+	  ProductManger.cs Bir entityFramework Bir Nhibernate Kodu gormezsiniz.
+
+---Arayuze (Form1 ) Kod alana gidiyoruz LOAd kisimda  ProductManager productManager= new ProductManager(); yerinde****************************
+     ProductManager productManager= new ProductManager(new EfProductDal());
+
+	 Program calisiyor simdi hic implementasiyonu degistirmeden
+
+	  ProductManager productManager= new ProductManager(new NhProductDal());
+
+	//  Bakiyorsunuz bu da calisiyor
+

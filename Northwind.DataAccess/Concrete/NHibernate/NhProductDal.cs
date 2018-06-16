@@ -9,7 +9,7 @@ using Northwind.Entities.Concrete;
 namespace Northwind.DataAccess.Concrete.NHibernate
 {
     //Nh Nhibernateten geliyor
-    class NhProductDal : IProductDal
+   public class NhProductDal : IProductDal
     {
         public void Add(Product product)
         {
@@ -28,7 +28,19 @@ namespace Northwind.DataAccess.Concrete.NHibernate
 
         public List<Product> GetALL()
         {
-            throw new NotImplementedException();
+            List<Product> products = new List<Product>
+            {
+                new Product{
+                    ProductId = 1,
+                    ProductName = "iphone",
+                    CategoryId = 1,
+                    QuantityPerUnit = "1 in a Box",
+                    UnitPrice = 213,
+                    UnitsInStock = 23
+                }
+                
+            };
+            return products;
         }
 
         public void Update(Product product)
