@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Northwind.DataAccess.Concrete.EntityFramework;
 using Northwind.Entities.Concrete;
+using Northwind.DataAccess.Abstruct;
 
-namespace Northwind.DataAccess.Concrete
+namespace Northwind.DataAccess.Concrete.EntityFramework
 {
-    public class ProductDal
+    public class EfProductDal : IProductDal
     {
         //Tum Liste Donduren
         public List<Product> GetALL()
         {
-            using (NorthwindContext context=new NorthwindContext())
+            using (NorthwindContext context = new NorthwindContext())
             {
                 return context.Products.ToList();
             }
@@ -21,9 +23,9 @@ namespace Northwind.DataAccess.Concrete
         //Id verdimiz product gostersin
         public Product Get(int id)
         {
-            using (NorthwindContext context= new NorthwindContext())
+            using (NorthwindContext context = new NorthwindContext())
             {
-                return context.Products.SingleOrDefault(p => p.ProductId  == id);
+                return context.Products.SingleOrDefault(p => p.ProductId == id);
             }
         }
 
@@ -42,13 +44,11 @@ namespace Northwind.DataAccess.Concrete
         {
 
         }
-        
+
         //Delete Operasiyon
         public void Delete(Product product)
         {
 
         }
-
-
     }
 }

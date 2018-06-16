@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Northwind.DataAccess.Concrete;
+using Northwind.DataAccess.Concrete.EntityFramework;
 using Northwind.Entities.Concrete;
 
 namespace Northwind.Business.Concrete
@@ -11,7 +12,7 @@ namespace Northwind.Business.Concrete
     //icinde gerekli operasiyonlari yazacagim
    public class ProductManager
     {
-        ProductDal _productDal = new ProductDal();
+        EfProductDal _productDal = new EfProductDal();
         public List<Product> GetAll()
         {
             //DataAccessLayer kullanmamiz lazim
