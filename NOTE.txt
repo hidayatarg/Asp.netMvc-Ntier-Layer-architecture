@@ -139,3 +139,16 @@ startup tan once ekliyoruz
 	  </connectionStrings>
 
 
+
+  ******************************************Code Smells ****Kod Alisikanligi********************************
+  Ara yuzde ara yuz kodu yazalim back endi bagli olmayalim.
+  baska bir veritabani projenizde desteklemek istiyorsaniz.
+  product dal da kodumuz dogru degil direk entity frameworku yapistirmisiz.
+  Open close- bir uygulamaya yeni ozelik eklendiginde mevcutta olan kodlari dokunulmaz. Configuarsioyon haric.
+  Baska bir veritabi desktedimiz bu kod cirkin hali gelecek.
+  solid d hafrisye dependenciy
+  Product manager _product baglidir. bir katman diger katmani newleyemez.
+  ---Is katmanda baska bir nesneyi bile newleyemezsiniz. bagimlilik olur. burda product dala bagimliyiz. Farkli ORMlar destekledimizde kod cirken hali gelir (CODE smell) diyoruz buna.
+
+
+
