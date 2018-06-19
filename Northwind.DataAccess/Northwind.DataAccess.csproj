@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstruct\IEntityRepository.cs" />
     <Compile Include="Abstruct\IProductDal.cs" />
     <Compile Include="Concrete\EntityFramework\NorthwindContext.cs" />
     <Compile Include="Concrete\EntityFramework\EfProductDal.cs" />

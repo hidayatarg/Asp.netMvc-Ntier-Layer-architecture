@@ -346,4 +346,45 @@ startup tan once ekliyoruz
 ****************************************************************************************************************************************
 ***************************************************Repository Design Pattern************************************************************
 ****************************************************************************************************************************************
+Herkes tarafindan kullanilacaktir. 
+Entity framework da kullanir Nhibernate de kullanir
+IProductDal daki islemleri 
 
+---DataAccess>Abstruct> Interface ekleyecegiz isimi IEntityRepository
+---public olarak verecegiz
+---IproductDal daki islemleri kesip IEntityRepository icinde koyacagiz.
+---Yapistirdimizda sadece product degisecektir onun icin bir generic tipiler calisabilirz.
+----Yani orda ben ne tipile verirsem o tipe gore sekil almasi icin.
+---Productlar yerinde Genericdeki T yaziyorum.
+----product da entity olacak (Genel isim koyma)
+
+
+			 public interface IEntityRepository<T>
+			{
+				//Tum Liste Donduren
+				List<T> GetALL();
+
+				//Id verdimiz product gostersin
+				T Get(int id);
+
+				//Ekleme Operasiyon
+				void Add(T entity);
+
+				//Guncellem Operasiyon
+				void Update(T entity);
+
+
+				//Delete Operasiyon
+				void Delete(T entity);
+
+			}
+
+---Iproduct dali IEntityRepository <Product> inherit ediyorum (bu durum Entity icersideki islemeri silersem kizacaktir)
+
+
+	 public interface IProductDal:IEntityRepository<Product>
+	   {
+      
+
+
+	   }

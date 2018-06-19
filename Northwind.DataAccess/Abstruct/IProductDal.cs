@@ -7,24 +7,10 @@ using Northwind.Entities.Concrete;
 
 namespace Northwind.DataAccess.Abstruct
 {
-    //Gerekli olan operasiyonlari burda yazariz
-   public interface IProductDal
+    //Gerekli olan operasiyonlari IEntityRepository Katmandan alacak
+   public interface IProductDal:IEntityRepository<Product>
    {
-       //Tum Liste Donduren
-        List<Product> GetALL();
-
-       //Id verdimiz product gostersin
-       Product Get(int id);
-
-       //Ekleme Operasiyon
-       void Add(Product product);
-
-       //Guncellem Operasiyon
-       void Update(Product product);
-       
-
-       //Delete Operasiyon
-       void Delete(Product product);
+      
 
 
    }
