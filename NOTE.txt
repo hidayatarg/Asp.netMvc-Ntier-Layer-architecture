@@ -388,3 +388,63 @@ IProductDal daki islemleri
 
 
 	   }
+
+
+
+	   //Filtreleri eklenmis olduk
+	   public interface IEntityRepository<T>
+    {
+        //Tum Liste Donduren
+        List<T> GetALL(Expression<Func<T,bool>> filter=null);
+
+        //Id verdimiz product gostersin
+        T Get(Expression<Func<T, bool>> filter);
+
+        //Ekleme Operasiyon
+        void Add(T entity);
+
+        //Guncellem Operasiyon
+        void Update(T entity);
+
+
+        //Delete Operasiyon
+        void Delete(T entity);
+
+    }
+
+
+Product IEntity turunden uretecegiz.
+
+public class Product:IEntity
+    {
+        public int ProductId { get; set; }
+        public int CategoryId { get; set; } //comes after primary key
+        public string ProductName { get; set; }
+
+        public decimal UnitPrice { get; set; }
+        public Int16 UnitsInStock { get; set; }
+        public string QuantityPerUnit { get; set; }
+    }
+}
+
+-IentityRepository gelen T:class olmali ientity turunden uretilmelidir. ve newlendebilir olmali
+public interface IEntityRepository<T> 
+       where T:class , IEntity, new ()
+    {
+        //Tum Liste Donduren
+        List<T> GetALL(Expression<Func<T,bool>> filter=null);
+
+        //Id verdimiz product gostersin
+        T Get(Expression<Func<T, bool>> filter);
+
+        //Ekleme Operasiyon
+        void Add(T entity);
+
+        //Guncellem Operasiyon
+        void Update(T entity);
+
+
+        //Delete Operasiyon
+        void Delete(T entity);
+
+    }
