@@ -448,3 +448,5 @@ public interface IEntityRepository<T>
         void Delete(T entity);
 
     }
+
+	EfProduct Dal daki problemi cozduk yeni filterleri eklemistik onu da fonksiyonlari girmis olduk
