@@ -450,3 +450,5 @@ public interface IEntityRepository<T>
     }
 
 	EfProduct Dal daki problemi cozduk yeni filterleri eklemistik onu da fonksiyonlari girmis olduk
+
+-Form1 ekrana comboBox ve Textbox ekledi arama icin

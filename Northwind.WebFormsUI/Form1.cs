@@ -33,5 +33,10 @@ namespace Northwind.WebFormsUI
            // ProductManager productManager= new ProductManager(new NhProductDal());
             dgwProduct.DataSource = _productService.GetAll();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
