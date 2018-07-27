@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Northwind.DataAccess.Abstruct;
@@ -11,22 +12,7 @@ namespace Northwind.DataAccess.Concrete.NHibernate
     //Nh Nhibernateten geliyor
    public class NhProductDal : IProductDal
     {
-        public void Add(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Product> GetALL()
+        public List<Product> GetALL(Expression<Func<Product, bool>> filter = null)
         {
             List<Product> products = new List<Product>
             {
@@ -38,10 +24,27 @@ namespace Northwind.DataAccess.Concrete.NHibernate
                     UnitPrice = 213,
                     UnitsInStock = 23
                 }
-                
+
             };
             return products;
         }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+       
 
         public void Update(Product product)
         {
